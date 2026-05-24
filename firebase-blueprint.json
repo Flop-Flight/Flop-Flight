@@ -1,0 +1,73 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user of the Luminix platform.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "stripeAccountId": { "type": "string" },
+        "balance": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "ChatHistory": {
+      "title": "ChatHistory",
+      "description": "Stored interaction between a user and Luminix AI Academic tool.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "query": { "type": "string" },
+        "answer": { "type": "string" },
+        "subject": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "query", "answer", "timestamp"]
+    },
+    "Thread": {
+      "title": "Thread",
+      "description": "A conversation thread session.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "userId": { "type": "string" }
+      },
+      "required": ["title", "updatedAt", "userId"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "An individual chat message in a thread.",
+      "type": "object",
+      "properties": {
+        "role": { "enum": ["user", "bot"] },
+        "content": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "image": { "type": "string" }
+      },
+      "required": ["role", "content", "timestamp"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profiles."
+    },
+    "users/{userId}/history/{historyId}": {
+      "schema": "ChatHistory",
+      "description": "User's individual academic tool history records."
+    },
+    "users/{userId}/threads/{threadId}": {
+      "schema": "Thread",
+      "description": "Conversation threads."
+    },
+    "users/{userId}/threads/{threadId}/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Messages within a thread."
+    }
+  }
+}
