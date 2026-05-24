@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
+
+@layer base {
+  .moving-gradient {
+    background: linear-gradient(-45deg, #f0f9ff, #e0f2fe, #fdf4ff, #fff1f2);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  .dark .moving-gradient {
+    background: linear-gradient(-45deg, #0f172a, #1e1b4b, #2e1065, #020617);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+
+  .gemini-sparkle {
+    background: linear-gradient(45deg, #4285f4, #9b72cb, #d96570, #f4af11);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Improved Markdown visibility for dark mode using typography plugin */
+  .prose {
+    --tw-prose-body: #334155;
+    --tw-prose-headings: #0f172a;
+    --tw-prose-bold: #0f172a;
+    --tw-prose-links: #2563eb;
+    --tw-prose-quote-borders: #e2e8f0;
+  }
+
+  .dark .prose.dark\:prose-invert {
+    --tw-prose-body: #cbd5e1;
+    --tw-prose-headings: #ffffff;
+    --tw-prose-lead: #94a3b8;
+    --tw-prose-links: #3b82f6;
+    --tw-prose-bold: #ffffff;
+    --tw-prose-counters: #94a3b8;
+    --tw-prose-bullets: #475569;
+    --tw-prose-hr: #1e293b;
+    --tw-prose-quotes: #f1f5f9;
+    --tw-prose-quote-borders: #334155;
+    --tw-prose-captions: #64748b;
+    --tw-prose-code: #f8fafc;
+    --tw-prose-pre-code: #e2e8f0;
+    --tw-prose-pre-bg: #0f172a;
+    --tw-prose-th-borders: #334155;
+    --tw-prose-td-borders: #1e293b;
+  }
+}

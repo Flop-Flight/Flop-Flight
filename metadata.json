@@ -1,0 +1,6 @@
+{
+  "name": "Luminix",
+  "description": "The official intelligence and utility platform of the Luminix Study Platform, featuring expert academic assistance and 30+ productivity tools.",
+  "requestFramePermissions": ["microphone", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
